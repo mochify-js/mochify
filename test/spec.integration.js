@@ -8,7 +8,7 @@ describe('spec', () => {
     sinon.replace(process.stdout, 'write', sinon.fake());
 
     await mochify({
-      driver: 'jsdom',
+      driver: '../test/fixture/driver.js',
       reporter: 'json',
       spec: `${__dirname}/fixture/pass*.js`,
       bundle: 'cat'

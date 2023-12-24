@@ -8,7 +8,7 @@ describe('bundle', () => {
     sinon.replace(process.stdout, 'write', sinon.fake());
 
     await mochify({
-      driver: 'jsdom',
+      driver: '../test/fixture/driver.js',
       reporter: 'json',
       spec: 'unknown-file.js',
       bundle: 'echo \'it("works", function(){});\''
@@ -24,7 +24,7 @@ describe('bundle', () => {
 
   it('fails with error from command', async () => {
     const promise = mochify({
-      driver: 'jsdom',
+      driver: '../test/fixture/driver.js',
       spec: 'unknown-file.js',
       bundle: 'false'
     });

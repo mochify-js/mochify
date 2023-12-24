@@ -13,8 +13,8 @@ const { run } = require('./lib/run');
 
 /**
  * @typedef {import('./lib/load-config').MochifyOptions} MochifyOptions
+ * @typedef {import('./lib/driver').MochifyDriver} MochifyDriver
  * @typedef {import('./lib/server').MochifyServer} MochifyServer
- * @typedef {import('./driver').MochifyDriver} MochifyDriver
  */
 
 exports.mochify = mochify;
