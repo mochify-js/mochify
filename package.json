@@ -17,7 +17,7 @@
     "postpack": "npm run clean",
     "preversion": "npm run lint && npm run prettier:check && tsc && npm test && npm run test:integration",
     "version": "changes --commits --footer --workspace",
-    "postversion": "npm publish"
+    "postversion": "git push --follow-tags && npm publish"
   },
   "keywords": [
     "mocha",
