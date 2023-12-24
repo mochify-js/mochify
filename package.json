@@ -2,7 +2,7 @@
   "name": "@mochify/mochify",
   "version": "0.3.3",
   "description": "Run mocha tests in headless browsers",
-  "homepage": "https://github.com/mantoni/mochify.js",
+  "homepage": "https://github.com/mochify-js/mochify",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
