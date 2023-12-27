@@ -54,7 +54,7 @@ async function mochify(options = {}) {
   const driver_promise = mochifyDriver(driver_options);
   const bundler_promise = config.esm
     ? Promise.resolve('')
-    : resolveBundle(config.bundle, resolved_spec);
+    : resolveBundle(config.bundle, resolved_spec, config);
 
   let driver, bundle;
   try {
