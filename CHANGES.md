@@ -1,5 +1,12 @@
 # Changes
 
+## 0.5.1
+
+- [`f42f066`](https://github.com/mochify-js/mochify/commit/f42f0665684908abdc73977c1e0a69fb80b0956c)
+  Improve stack trace mapping
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2023-12-28._
+
 ## 0.5.0
 
 - [`9a656eb`](https://github.com/mochify-js/mochify/commit/9a656ebc1aa741932177cd7288edb4b6382a90df)
