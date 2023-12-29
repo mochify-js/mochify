@@ -1,5 +1,12 @@
 # Changes
 
+## 0.5.2
+
+- [`2940d8c`](https://github.com/mochify-js/mochify/commit/2940d8c05fc0973bf4d8b459321ce5c00a750cee)
+  Remove test framework internal frames from stack traces
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2023-12-29._
+
 ## 0.5.1
 
 - [`f42f066`](https://github.com/mochify-js/mochify/commit/f42f0665684908abdc73977c1e0a69fb80b0956c)
