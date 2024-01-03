@@ -1,6 +1,6 @@
 {
   "name": "@mochify/mochify",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Run mocha tests in headless browsers",
   "homepage": "https://github.com/mochify-js/mochify",
   "main": "index.js",

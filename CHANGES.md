@@ -1,5 +1,12 @@
 # Changes
 
+## 0.5.3
+
+- [`0590c3f`](https://github.com/mochify-js/mochify/commit/0590c3f27f5a8d0d044b94559882738286d02800)
+  Forward bundle command stderr
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-01-03._
+
 ## 0.5.2
 
 - [`2940d8c`](https://github.com/mochify-js/mochify/commit/2940d8c05fc0973bf4d8b459321ce5c00a750cee)
