@@ -1,5 +1,12 @@
 # Changes
 
+## 0.5.4
+
+- [`64667d9`](https://github.com/mochify-js/mochify/commit/64667d92689f608169d63c1a5a26063844af7c8e)
+  Fix stack-mapper internal frame filtering
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-01-03._
+
 ## 0.5.3
 
 - [`0590c3f`](https://github.com/mochify-js/mochify/commit/0590c3f27f5a8d0d044b94559882738286d02800)
