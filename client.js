@@ -163,8 +163,10 @@ mocha.mochify_run = function () {
 
 window.onerror = function (msg, file, line, column, err) {
   if (err) {
-    console.error(err.stack);
+    write('console.error', [err.stack || String(err)]);
   } else {
-    console.error(msg + '\n    at ' + file + ':' + line + ':' + column);
+    write('console.error', [
+      msg + '\n    at ' + file + ':' + line + ':' + column
+    ]);
   }
 };
