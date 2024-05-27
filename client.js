@@ -143,13 +143,13 @@ mocha.mochify_run = function () {
   s.textContent = chunks.join('');
   document.body.appendChild(s);
   // Run mocha
-  mocha.run(function (code) {
+  mocha.run(function (failures) {
     // @ts-ignore
     if (typeof __coverage__ !== 'undefined') {
       // @ts-ignore
       write('mochify.coverage', window.__coverage__);
     }
-    write('mochify.callback', { code: code });
+    write('mochify.callback', { code: failures ? 1 : 0 });
   });
 };
 
