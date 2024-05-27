@@ -1,5 +1,18 @@
 # Changes
 
+## 0.5.5
+
+- 🐛 [`46d4b4b`](https://github.com/mochify-js/mochify/commit/46d4b4b13578160829cc4a0f3d809037fb80c2b9)
+  Remove circular dependencies from objects sent over the wire
+- 🐛 [`a33f7a7`](https://github.com/mochify-js/mochify/commit/a33f7a79b113219237d4bf9b5161fb66f83c243a)
+  Do not use the failure count as exit code
+- ✨ [`ed2b110`](https://github.com/mochify-js/mochify/commit/ed2b1105b6644268a0828b05b23cb063c8328b81)
+  Add onunhandledrejection handler
+- ✨ [`9cb6c5a`](https://github.com/mochify-js/mochify/commit/9cb6c5a34dffd4860af559b215b0eab696eda470)
+  Call `write` directly in global error handler
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-05-27._
+
 ## 0.5.4
 
 - [`64667d9`](https://github.com/mochify-js/mochify/commit/64667d92689f608169d63c1a5a26063844af7c8e)
