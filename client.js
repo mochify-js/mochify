@@ -170,3 +170,9 @@ window.onerror = function (msg, file, line, column, err) {
     ]);
   }
 };
+
+window.onunhandledrejection = function (event) {
+  write('console.error', [
+    'Unhandled rejection: ' + event.reason.stack || String(event.reason)
+  ]);
+};
