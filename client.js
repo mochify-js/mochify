@@ -45,7 +45,7 @@ function pollEvents() {
   }
   var events = queue.slice();
   queue.length = 0;
-  return events;
+  return events.map(decircular);
 }
 
 function write(event, data) {
@@ -176,3 +176,34 @@ window.onunhandledrejection = function (event) {
     'Unhandled rejection: ' + event.reason.stack || String(event.reason)
   ]);
 };
+
+// Shameless copy of https://github.com/sindresorhus/decircular
+// TODO Use the package once codebase is migrated to ES modules
+function decircular(object) {
+  const seenObjects = new WeakMap();
+
+  function internalDecircular(value, path = []) {
+    if (!(value !== null && typeof value === 'object')) {
+      return value;
+    }
+
+    const existingPath = seenObjects.get(value);
+    if (existingPath) {
+      return `[Circular *${existingPath.join('.')}]`;
+    }
+
+    seenObjects.set(value, path);
+
+    const newValue = Array.isArray(value) ? [] : {};
+
+    for (const [key2, value2] of Object.entries(value)) {
+      newValue[key2] = internalDecircular(value2, [...path, key2]);
+    }
+
+    seenObjects.delete(value);
+
+    return newValue;
+  }
+
+  return internalDecircular(object);
+}
