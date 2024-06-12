@@ -5,15 +5,8 @@
 
 var constants = Mocha.Runner.constants;
 
-var error_keys = [
-  'name',
-  'message',
-  'stack',
-  'code',
-  'expected',
-  'actual',
-  'operator'
-];
+var error_keys = ['name', 'message', 'stack', 'code', 'operator'];
+var error_keys_decircular = ['actual', 'expected'];
 var test_keys = [
   'title',
   'type',
@@ -36,6 +29,13 @@ function copy(keys, from, to) {
     }
   });
 }
+function copyDecircular(keys, from, to) {
+  keys.forEach(function (key) {
+    if (hasOwnProperty.call(from, key)) {
+      to[key] = decircularCopy(from[key]);
+    }
+  });
+}
 
 var queue = [];
 
@@ -45,7 +45,7 @@ function pollEvents() {
   }
   var events = queue.slice();
   queue.length = 0;
-  return events.map(decircular);
+  return events;
 }
 
 function write(event, data) {
@@ -108,6 +108,7 @@ function MochifyReporter(runner) {
     var json = getTestData(test);
     json.err = {};
     copy(error_keys, err, json.err);
+    copyDecircular(error_keys_decircular, err, json.err);
     return json;
   });
   forward(runner, constants.EVENT_TEST_END, getTestData);
@@ -156,7 +157,7 @@ mocha.mochify_run = function () {
 ['debug', 'log', 'info', 'warn', 'error'].forEach(function (name) {
   if (console[name]) {
     console[name] = function () {
-      write('console.' + name, slice.call(arguments));
+      write('console.' + name, slice.call(arguments).map(decircularCopy));
     };
   }
 });
@@ -176,6 +177,13 @@ window.onunhandledrejection = function (event) {
     'Unhandled rejection: ' + event.reason.stack || String(event.reason)
   ]);
 };
+
+function decircularCopy(value) {
+  if (value === null || typeof value !== 'object') {
+    return value;
+  }
+  return JSON.parse(JSON.stringify(decircular(value)));
+}
 
 // Shameless copy of https://github.com/sindresorhus/decircular
 // TODO Use the package once codebase is migrated to ES modules
