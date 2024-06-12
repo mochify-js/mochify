@@ -1,5 +1,12 @@
 # Changes
 
+## 0.5.6
+
+- 🐛 [`7e79b8d`](https://github.com/mochify-js/mochify/commit/7e79b8d8c7098ce3a8ccf687593f775539e7bf4a)
+  Remove circular references and deep copy
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-06-12._
+
 ## 0.5.5
 
 - 🐛 [`46d4b4b`](https://github.com/mochify-js/mochify/commit/46d4b4b13578160829cc4a0f3d809037fb80c2b9)
