@@ -32,7 +32,7 @@ function copy(keys, from, to) {
 function copyDecircular(keys, from, to) {
   keys.forEach(function (key) {
     if (hasOwnProperty.call(from, key)) {
-      to[key] = decircularCopy(from[key]);
+      to[key] = serializableCopy(from[key]);
     }
   });
 }
@@ -157,7 +157,7 @@ mocha.mochify_run = function () {
 ['debug', 'log', 'info', 'warn', 'error'].forEach(function (name) {
   if (console[name]) {
     console[name] = function () {
-      write('console.' + name, slice.call(arguments).map(decircularCopy));
+      write('console.' + name, slice.call(arguments).map(serializableCopy));
     };
   }
 });
@@ -178,40 +178,49 @@ window.onunhandledrejection = function (event) {
   ]);
 };
 
-function decircularCopy(value) {
-  if (value === null || typeof value !== 'object') {
-    return value;
+function serializableCopy(object) {
+  const seen = new WeakMap();
+
+  function internal(value, path = []) {
+    if (value === null) {
+      return null;
+    }
+    switch (typeof value) {
+      case 'undefined':
+        return '[undefined]';
+      case 'number':
+        if (value === Infinity) {
+          return '[Infinity]';
+        }
+        if (value === -Infinity) {
+          return '[-Infinity]';
+        }
+        if (Number.isNaN(value)) {
+          return '[NaN]';
+        }
+        return value;
+      case 'function':
+        return `[Function: ${value.name || ''}]`;
+      case 'symbol':
+        return value.toString();
+      case 'object': {
+        const existing = seen.get(value);
+        if (existing) {
+          return `[Circular *${existing.join('.')}]`;
+        }
+        seen.set(value, path);
+
+        const new_value = Array.isArray(value) ? [] : {};
+        for (const [key2, value2] of Object.entries(value)) {
+          new_value[key2] = internal(value2, [...path, key2]);
+        }
+        seen.delete(value);
+        return new_value;
+      }
+      default:
+        return value;
+    }
   }
-  return JSON.parse(JSON.stringify(decircular(value)));
-}
 
-// Shameless copy of https://github.com/sindresorhus/decircular
-// TODO Use the package once codebase is migrated to ES modules
-function decircular(object) {
-  const seenObjects = new WeakMap();
-
-  function internalDecircular(value, path = []) {
-    if (!(value !== null && typeof value === 'object')) {
-      return value;
-    }
-
-    const existingPath = seenObjects.get(value);
-    if (existingPath) {
-      return `[Circular *${existingPath.join('.')}]`;
-    }
-
-    seenObjects.set(value, path);
-
-    const newValue = Array.isArray(value) ? [] : {};
-
-    for (const [key2, value2] of Object.entries(value)) {
-      newValue[key2] = internalDecircular(value2, [...path, key2]);
-    }
-
-    seenObjects.delete(value);
-
-    return newValue;
-  }
-
-  return internalDecircular(object);
+  return internal(object);
 }
