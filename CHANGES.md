@@ -1,5 +1,12 @@
 # Changes
 
+## 0.5.7
+
+- 🐛 [`58c0f28`](https://github.com/mochify-js/mochify/commit/58c0f28bf68db4a056073e250ad574f1576a2138)
+  Serialize and deserialize functions and special values
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-06-14._
+
 ## 0.5.6
 
 - 🐛 [`7e79b8d`](https://github.com/mochify-js/mochify/commit/7e79b8d8c7098ce3a8ccf687593f775539e7bf4a)
