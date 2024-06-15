@@ -1,13 +1,11 @@
 /*globals Mocha, mocha, window, document*/
-/*eslint-disable no-var, prefer-arrow-callback, mocha/prefer-arrow-callback,
-  object-shorthand, prefer-template*/
 'use strict';
 
-var constants = Mocha.Runner.constants;
+const constants = Mocha.Runner.constants;
 
-var error_keys = ['name', 'message', 'stack', 'code', 'operator'];
-var error_keys_decircular = ['actual', 'expected'];
-var test_keys = [
+const error_keys = ['name', 'message', 'stack', 'code', 'operator'];
+const error_keys_decircular = ['actual', 'expected'];
+const test_keys = [
   'title',
   'type',
   'state',
@@ -19,31 +17,31 @@ var test_keys = [
   '_currentRetry'
 ];
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var slice = Array.prototype.slice;
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+const slice = Array.prototype.slice;
 
 function copy(keys, from, to) {
-  keys.forEach(function (key) {
+  keys.forEach((key) => {
     if (hasOwnProperty.call(from, key)) {
       to[key] = from[key];
     }
   });
 }
 function copyDecircular(keys, from, to) {
-  keys.forEach(function (key) {
+  keys.forEach((key) => {
     if (hasOwnProperty.call(from, key)) {
       to[key] = serializableCopy(from[key]);
     }
   });
 }
 
-var queue = [];
+const queue = [];
 
 function pollEvents() {
   if (!queue.length) {
     return null;
   }
-  var events = queue.slice();
+  const events = queue.slice();
   queue.length = 0;
   return events;
 }
@@ -53,7 +51,7 @@ function write(event, data) {
 }
 
 function getTestData(test) {
-  var json = {
+  const json = {
     _fullTitle: test.fullTitle(),
     _titlePath: test.titlePath()
   };
@@ -62,50 +60,38 @@ function getTestData(test) {
 }
 
 function forward(runner, event, processor) {
-  runner.on(event, function (object, err) {
+  runner.on(event, (object, err) => {
     write(event, processor(object, err));
   });
 }
 
 function MochifyReporter(runner) {
-  var stats = runner.stats;
+  const stats = runner.stats;
 
-  forward(runner, constants.EVENT_RUN_BEGIN, function () {
-    return {
-      start: stats.start.toISOString()
-    };
-  });
+  forward(runner, constants.EVENT_RUN_BEGIN, () => ({
+    start: stats.start.toISOString()
+  }));
 
-  forward(runner, constants.EVENT_RUN_END, function () {
-    return {
-      end: stats.end.toISOString(),
-      duration: stats.duration
-    };
-  });
+  forward(runner, constants.EVENT_RUN_END, () => ({
+    end: stats.end.toISOString(),
+    duration: stats.duration
+  }));
 
-  forward(runner, constants.EVENT_SUITE_BEGIN, function (suite) {
-    return {
-      root: suite.root,
-      title: suite.title,
-      pending: suite.pending,
-      delayed: suite.delayed
-    };
-  });
+  forward(runner, constants.EVENT_SUITE_BEGIN, (suite) => ({
+    root: suite.root,
+    title: suite.title,
+    pending: suite.pending,
+    delayed: suite.delayed
+  }));
 
-  forward(runner, constants.EVENT_SUITE_END, function () {
-    return {};
-  });
-  forward(runner, constants.EVENT_DELAY_BEGIN, function () {
-    return {};
-  });
-  forward(runner, constants.EVENT_DELAY_END, function () {
-    return {};
-  });
+  forward(runner, constants.EVENT_SUITE_END, () => ({}));
+  forward(runner, constants.EVENT_DELAY_BEGIN, () => ({}));
+  forward(runner, constants.EVENT_DELAY_END, () => ({}));
 
   forward(runner, constants.EVENT_TEST_PASS, getTestData);
   forward(runner, constants.EVENT_TEST_PENDING, getTestData);
-  forward(runner, constants.EVENT_TEST_FAIL, function (test, err) {
-    var json = getTestData(test);
+  forward(runner, constants.EVENT_TEST_FAIL, (test, err) => {
+    const json = getTestData(test);
     json.err = {};
     copy(error_keys, err, json.err);
     copyDecircular(error_keys_decircular, err, json.err);
@@ -131,7 +117,7 @@ if (typeof globalThis !== 'undefined' && globalThis !== window) {
 // @ts-ignore
 mocha.mochify_pollEvents = pollEvents;
 
-var chunks = [];
+const chunks = [];
 // @ts-ignore
 mocha.mochify_receive = function (chunk) {
   chunks.push(chunk);
@@ -139,12 +125,12 @@ mocha.mochify_receive = function (chunk) {
 // @ts-ignore
 mocha.mochify_run = function () {
   // Inject script
-  var s = document.createElement('script');
+  const s = document.createElement('script');
   s.type = 'text/javascript';
   s.textContent = chunks.join('');
   document.body.appendChild(s);
   // Run mocha
-  mocha.run(function (failures) {
+  mocha.run((failures) => {
     // @ts-ignore
     if (typeof __coverage__ !== 'undefined') {
       // @ts-ignore
@@ -154,10 +140,10 @@ mocha.mochify_run = function () {
   });
 };
 
-['debug', 'log', 'info', 'warn', 'error'].forEach(function (name) {
+['debug', 'log', 'info', 'warn', 'error'].forEach((name) => {
   if (console[name]) {
     console[name] = function () {
-      write('console.' + name, slice.call(arguments).map(serializableCopy));
+      write(`console.${name}`, slice.call(arguments).map(serializableCopy));
     };
   }
 });
@@ -166,15 +152,13 @@ window.onerror = function (msg, file, line, column, err) {
   if (err) {
     write('console.error', [err.stack || String(err)]);
   } else {
-    write('console.error', [
-      msg + '\n    at ' + file + ':' + line + ':' + column
-    ]);
+    write('console.error', [`${msg} at ${file}:${line}:${column}`]);
   }
 };
 
 window.onunhandledrejection = function (event) {
   write('console.error', [
-    'Unhandled rejection: ' + event.reason.stack || String(event.reason)
+    `Unhandled rejection: ${event.reason.stack || String(event.reason)}`
   ]);
 };
 
