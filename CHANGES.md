@@ -1,5 +1,20 @@
 # Changes
 
+## 0.5.8
+
+- 🍏 [`a273579`](https://github.com/mochify-js/mochify/commit/a27357991f241e82706a5a6ad3d5f733d0c3e2db)
+  Install custom inspect on DOM objects
+- 🍏 [`e7567e4`](https://github.com/mochify-js/mochify/commit/e7567e46432f6737f79eeeb94ad326696f2dc7de)
+  Rewrite data serialization protocol
+- ✨ [`8ebf1e5`](https://github.com/mochify-js/mochify/commit/8ebf1e57baf1c2c4fd73f947e1442a21c289e41a)
+  Remove node 16, add node 22
+- ✨ [`481b6b5`](https://github.com/mochify-js/mochify/commit/481b6b5e270002c31069afa9d2f4a293f11e24c7)
+  Update mocha
+- ✨ [`2874b57`](https://github.com/mochify-js/mochify/commit/2874b57b32d4b22906f2c187847db598dddc2484)
+  Modernize client.js
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-06-17._
+
 ## 0.5.7
 
 - 🐛 [`58c0f28`](https://github.com/mochify-js/mochify/commit/58c0f28bf68db4a056073e250ad574f1576a2138)
