@@ -393,3 +393,23 @@ function serialize(input) {
     );
   }
 }
+
+/**
+ * @returns {string}
+ * @this {Object}
+ */
+function inspect() {
+  return this.toString();
+}
+
+[
+  Attr,
+  Comment,
+  Element,
+  DocumentFragment,
+  HTMLCollection,
+  NamedNodeMap,
+  NodeList
+].forEach((Type) => {
+  Object.defineProperty(Type.prototype, 'inspect', { value: inspect });
+});
