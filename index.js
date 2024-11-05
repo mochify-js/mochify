@@ -34,7 +34,7 @@ async function mochify(options = {}) {
   const [mocha, client, resolved_spec] = await Promise.all([
     readFile(require.resolve('mocha/mocha.js'), 'utf8'),
     readFile(require.resolve('./client'), 'utf8'),
-    resolveSpec(config.spec)
+    resolveSpec(config.require, config.spec)
   ]);
 
   const configured_client = setupClient(client, config);
