@@ -1,5 +1,14 @@
 # Changes
 
+## 0.5.9
+
+- 🍏 [`95b27fa`](https://github.com/mochify-js/mochify/commit/95b27fa088070dbedc9f5b92fa854ccc69e88f0f)
+  Add support for "require" config
+- ✨ [`dbab7f2`](https://github.com/mochify-js/mochify/commit/dbab7f2ac845aff4e83ea572379127061d132849)
+  Run installed version of tsc in GH action
+
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2024-11-05._
+
 ## 0.5.8
 
 - 🍏 [`a273579`](https://github.com/mochify-js/mochify/commit/a27357991f241e82706a5a6ad3d5f733d0c3e2db)
