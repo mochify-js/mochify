@@ -31,7 +31,7 @@ describe('bundle', () => {
     await assert.rejects(
       promise,
       match({
-        name: 'Error',
+        name: 'ExecaError',
         message: 'Command failed with exit code 1: false'
       })
     );
