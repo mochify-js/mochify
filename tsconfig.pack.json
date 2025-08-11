@@ -7,5 +7,11 @@
     "emitDeclarationOnly": true
   },
   "include": ["**/*.js"],
-  "exclude": ["node_modules", "**/*.test.js", "test/**", "client.js"]
+  "exclude": [
+    "node_modules",
+    "**/*.test.js",
+    "test/**",
+    "client.js",
+    "eslint.config.js"
+  ]
 }

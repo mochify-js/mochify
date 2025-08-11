@@ -63,9 +63,9 @@ describe('console', () => {
       'function test(){}': toString(function test() {}),
       /* eslint-disable-next-line prefer-arrow-callback, mocha/prefer-arrow-callback */
       'async function test(){}': toString(async function test() {}),
-      /* eslint-disable-next-line prefer-arrow-callback, mocha/prefer-arrow-callback */
+
       'function* test(){}': toString(function* test() {}),
-      /* eslint-disable-next-line prefer-arrow-callback, mocha/prefer-arrow-callback */
+
       'async function* test(){}': toString(async function* test() {}),
       '()=>{}': toString(() => {}),
       'Object.assign(function test(){},{[Symbol("test")]:42})': toString(
@@ -79,7 +79,7 @@ describe('console', () => {
           [3, 4]
         ])
       ),
-      /* eslint-disable-next-line no-undef */
+
       'new WeakRef({})': toString(new WeakRef({})),
       'new WeakSet()': toString(new WeakSet()),
       'new WeakMap()': toString(new WeakMap()),
