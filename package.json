@@ -14,7 +14,7 @@
     "watch": "npm test -- --watch",
     "build": "tsc --project tsconfig.pack.json",
     "clean": "rimraf --glob '!(node_modules)/**/*.d.ts' '*.d.ts' coverage",
-    "prepack": "npm run build",
+    "prepack": "npm run clean && npm run build",
     "postpack": "npm run clean",
     "preversion": "npm run lint && npm run prettier:check && tsc && npm run coverage:check",
     "version": "changes --commits --footer",
