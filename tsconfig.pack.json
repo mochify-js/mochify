@@ -12,6 +12,7 @@
     "**/*.test.js",
     "test/**",
     "client.js",
-    "eslint.config.js"
+    "eslint.config.js",
+    "coverage"
   ]
 }
