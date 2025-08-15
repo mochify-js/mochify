@@ -1,5 +1,59 @@
 # Changes
 
+## 1.0.0
+
+- [`3ad28a7`](https://github.com/mochify-js/mochify/commit/3ad28a76fb3d7d9147bbd4ebdf6f0899059bf7c2)
+  chore: dependabot to update package.json (Yashar Fakhari)
+- [`d9bb462`](https://github.com/mochify-js/mochify/commit/d9bb4629037cd97bf364b8e9189f8e2c21262106)
+  chore(deps-dev): bump eslint from 9.32.0 to 9.33.0 (#16) (dependabot[bot])
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`6e93813`](https://github.com/mochify-js/mochify/commit/6e9381366fe04cebca78aaf5c203a48a184d2743)
+  chore(deps-dev): bump lint-staged from 16.1.4 to 16.1.5 (#17) (dependabot[bot])
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`8798f30`](https://github.com/mochify-js/mochify/commit/8798f3080f20fc31172d45792dabb0ec53006e2d)
+  chore(deps-dev): bump @types/node from 24.2.0 to 24.2.1 (#15) (dependabot[bot])
+    >
+    > Signed-off-by: dependabot[bot] <support@github.com>
+    > Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+- [`eff996a`](https://github.com/mochify-js/mochify/commit/eff996acd5874edeaa5ecbb0f50bddf82ceb849f)
+  chore: Add Dependabot config and automerge (Yashar Fakhari)
+- [`729d13f`](https://github.com/mochify-js/mochify/commit/729d13fbf285da0d2b9808779c1ce06e1ca75e36)
+  test: add coverage reporting and update CI workflow (Yashar Fakhari)
+    >
+    > - add c8 for coverage reporting and enforce coverage at current baseline to reduce chances of regression
+    > - update CI to run coverage checks on node 20 and skip duplicate test runs
+- [`d1bb398`](https://github.com/mochify-js/mochify/commit/d1bb39805df9cb25dacd68fca6fb0f73439cb6bc)
+  chore(doc): Update documentation (Yashar Fakhari)
+- [`387e5ce`](https://github.com/mochify-js/mochify/commit/387e5cec697ec0c3e0743f7dd0dea715a172c757)
+  chore: Upgrade dependencies (#11) (Yashar Fakhari)
+    >
+    > - Upgrade execa to v9.6.0
+    >   - Remove deprecated `result.killed` check as execa now throws on failure
+    >   - Update test expectations from Error to ExecaError type
+    > - Upgrade mime to v4.0.7 with ESM compatibility
+    >   - Implement async dynamic import for ESM-only mime package
+    >   - Add race condition-safe module loading with promise caching
+    > - Upgrade ESLint to v9.32.0
+    >   - Add eslint.config.js as the flat config
+    >   - Upgrade @studio/eslint-config to v8.0.1 for the studio eslint configs
+    > - Remove unused error parameter in catch block to fix linting
+    > - Add JSDoc comment for requestHandler
+    >   - Add null checks for req.url to satisfy TypeScript strict mode
+    > - Update GitHub workflow
+    >   - Add read-only permissions
+    >   - Update to Node.js 20/22 matrix
+    >   - Include build step in CI checks
+    > - Upgrade husky to v9
+    >   - Remove deprecated script code from husky pre-commit script
+    > - Upgrade other dependencies
+    >  
+
+_Released by Yashar Fakhari on 2025-08-15._
+
 ## 0.5.9
 
 - 🍏 [`95b27fa`](https://github.com/mochify-js/mochify/commit/95b27fa088070dbedc9f5b92fa854ccc69e88f0f)
@@ -96,4 +150,4 @@ _Released by [Maximilian Antoni](https://github.com/mantoni) on 2023-12-27._
 
 - Initial release
 
-_Released by [Maximilian Antoni](https://github.com/mantoni) on 2023-12-24._
+_Released by [Maximilian Antoni](https://github.com/mantoni) on 2022-12-24._
