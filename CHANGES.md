@@ -1,5 +1,16 @@
 # Changes
 
+## 1.0.1
+
+- [`67bf39c`](https://github.com/mochify-js/mochify/commit/67bf39c3982e55e6a9f3bc4f8112ee7e297c9c92)
+  chore: update dependencies (Yashar Fakhari)
+- [`5ad0d9d`](https://github.com/mochify-js/mochify/commit/5ad0d9d63b69dc74c8a887f766fe63cf02abcf3e)
+  build: clean before build when running prepack (Yashar Fakhari)
+- [`86f3049`](https://github.com/mochify-js/mochify/commit/86f3049564089c6763107c271a9f19aa201a24e1)
+  fix: don't leak mocha types, add tests for type leak (Yashar Fakhari)
+
+_Released by Yashar Fakhari on 2025-08-15._
+
 ## 1.0.0
 
 - [`3ad28a7`](https://github.com/mochify-js/mochify/commit/3ad28a76fb3d7d9147bbd4ebdf6f0899059bf7c2)
