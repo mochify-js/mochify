@@ -7,6 +7,7 @@ updates:
       interval: "monthly"
       day: "wednesday"
       time: "00:00"  # UTC
+    versioning-strategy: "increase"
     open-pull-requests-limit: 10
     commit-message:
       prefix: "chore"
