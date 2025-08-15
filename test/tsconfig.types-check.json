@@ -1,0 +1,7 @@
+{
+  "extends": "@studio/tsconfig",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "files": ["fixture/types-consumer.js"]
+}
