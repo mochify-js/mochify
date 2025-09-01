@@ -60,7 +60,7 @@
     "@studio/tsconfig": "^1.3.0",
     "@types/node": "^24.3.0",
     "c8": "^10.1.3",
-    "eslint": "^9.33.0",
+    "eslint": "^9.34.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "lint-staged": "^16.1.5",
