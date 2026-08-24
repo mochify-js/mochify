@@ -33,7 +33,7 @@
   "author": "Maximilian Antoni <mail@maxantoni.de> (http://maxantoni.de)",
   "license": "MIT",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.13"
   },
   "mocha": {
     "reporter": "dot",
@@ -55,12 +55,12 @@
   "devDependencies": {
     "@sinonjs/referee-sinon": "^12.0.1",
     "@studio/changes": "^3.0.0",
-    "@studio/eslint-config": "^8.0.1",
+    "@studio/eslint-config": "^9.0.1",
     "@studio/related-tests": "^0.2.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "^26.2.0",
     "c8": "^12.0.0",
-    "eslint": "^9.39.2",
+    "eslint": "^10.9.0",
     "husky": "^9.1.7",
     "jsdom": "^30.0.1",
     "lint-staged": "^17.3.0",
