@@ -40,6 +40,7 @@ async function mochify(options = {}) {
   const configured_client = setupClient(client, config);
   const driver_options = config.driver_options || {};
 
+  /** @type {MochifyServer | null} */
   let server = null;
   if (config.serve || config.esm) {
     const _scripts = [mocha, configured_client];

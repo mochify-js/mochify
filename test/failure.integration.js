@@ -36,7 +36,7 @@ describe('failure', () => {
     assert.equals(err.actual, JSON.stringify({ test: 'bar' }, null, '  '));
     assert.equals(err.stack.split('\n').slice(0, 2), [
       'TypeError: Oh noes!',
-      '    at myTest (source.js:45)'
+      '    at myTest (source.js:44)'
     ]);
   });
 });

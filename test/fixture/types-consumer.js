@@ -21,7 +21,7 @@ const driver = {
   // We don't actually evaluate; this fixture is for types only.
   // eslint-disable-next-line no-unused-vars
   evaluate(script) {
-    return Promise.resolve(undefined);
+    return Promise.resolve({});
   },
   end() {
     return Promise.resolve();
