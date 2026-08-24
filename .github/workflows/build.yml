@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: ['20.x', '22.x']
+        node-version: ['22.x', '24.x', '26.x']
 
     steps:
       - name: Checkout
@@ -31,28 +31,28 @@ jobs:
       - name: Install
         run: npm ci
       - name: Lint
-        if: matrix.node-version == '20.x'
+        if: matrix.node-version == '26.x'
         run: npm run lint
       - name: Types
-        if: matrix.node-version == '20.x'
+        if: matrix.node-version == '26.x'
         run: node_modules/.bin/tsc
       - name: Prettier
-        if: matrix.node-version == '20.x'
+        if: matrix.node-version == '26.x'
         run: npm run prettier:check
       - name: Types check
-        if: matrix.node-version == '20.x'
+        if: matrix.node-version == '26.x'
         run: npm run types:check && npm run clean
       - name: Build
-        if: matrix.node-version == '20.x'
+        if: matrix.node-version == '26.x'
         run: npm run build
       - name: Coverage
-        if: matrix.node-version == '20.x'
+        if: matrix.node-version == '26.x'
         run: npm run coverage:check
       - name: Test
-        if: matrix.node-version != '20.x' #coverage-check for 20.x already runs test:all
+        if: matrix.node-version != '26.x' #coverage-check for 26.x already runs test:all
         run: npm test
       - name: Integration
-        if: matrix.node-version != '20.x' #coverage-check for 20.x already runs test:all
+        if: matrix.node-version != '26.x' #coverage-check for 26.x already runs test:all
         run: npm run test:integration
 
   dependabot-automerge:
