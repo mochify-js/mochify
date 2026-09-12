@@ -1,0 +1,4 @@
+echo 'Checking commit message format (Conventional Commits: https://www.conventionalcommits.org)'
+echo 'Reminder: mark a breaking change with ! in the title or a "BREAKING CHANGE: " footer'
+echo 'For work in progress, a short message like "fix: wip" or "feat: wip new reporter option" can work'
+node_modules/.bin/commitlint --edit "$1"

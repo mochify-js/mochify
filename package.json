@@ -53,6 +53,8 @@
     "string-argv": "^0.3.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
     "@sinonjs/referee-sinon": "^12.0.1",
     "@studio/changes": "^3.0.0",
     "@studio/eslint-config": "^9.0.1",
